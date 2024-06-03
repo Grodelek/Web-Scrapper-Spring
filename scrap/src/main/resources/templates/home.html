@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<h1>Web Scraping Books: </h1>
+
+<div class="tableStyle">
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.title}">Title</td>
+        <td th:text="${book.price}">Price</td>
+    </tr>
+</table>
+</div>
+
+</body>
+</html>
