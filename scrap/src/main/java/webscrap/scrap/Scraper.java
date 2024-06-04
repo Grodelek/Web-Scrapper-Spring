@@ -20,7 +20,8 @@ public class Scraper {
                 for (Element bk : books) {
                     String title = bk.select("h3 > a").text();
                     String price = bk.select(".price_color").text();
-                    bookList.add(new Book(title, price));
+                    String stock = bk.select(".instock").text();
+                    bookList.add(new Book(title, price, stock));
                 }
 
             } catch (IOException e) {
