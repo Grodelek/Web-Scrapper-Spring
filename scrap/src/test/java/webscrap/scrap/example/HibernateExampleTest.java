@@ -46,14 +46,27 @@ public class HibernateExampleTest {
         try (Session session = sessionFactory.openSession()) {
             session.beginTransaction();
             for (Book book : books) {
-                session.save(book);
+                session.persist(book);
             }
             session.getTransaction().commit();
         }
 
         try (Session session = sessionFactory.openSession()) {
-            List<Book> savedBooks = session.createQuery("from Book", Book.class).list();
-            assertThat(savedBooks).hasSize(books.size());
+            List<Book> result = session.createQuery("from Book", Book.class).list();
+            assertThat(result).hasSize(books.size());
+        }
+    }
+
+    @Test
+    void read_books_from_db(){
+        try(Session session = sessionFactory.openSession()){
+            List<Book> books = session.createQuery("from Book", Book.class).list();
+            assertThat(books).isNotEmpty();
+            for(Book book : books){
+                System.out.println(book);
+            }
+            // Optionally print the books to visually check the data
+
         }
     }
 }
