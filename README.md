@@ -7,7 +7,7 @@ The Web Scraping Project is aimed at collecting data from various websites using
 
 Technologies Used:
 
-    Spring Boot
+    Spring
     Maven
     Hibernate
     Jsoup
